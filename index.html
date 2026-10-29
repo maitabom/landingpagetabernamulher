@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A Taberna dos Nerds é um espaço para mulheres viverem sua paixão por games, RPG, animes e cultura nerd com liberdade e companhia."
+    >
+    <meta name="theme-color" content="#17121f">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E"
+    >
+    <title>Taberna dos Nerds — sua aventura também começa aqui</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f9f4ed;
+        --muted: #c5b9c9;
+        --night: #17121f;
+        --plum: #261b30;
+        --card: #30243a;
+        --pink: #f09ab7;
+        --gold: #f4c778;
+        --mint: #a7d7c5;
+        --line: rgb(255 255 255 / 12%);
+        --serif: Georgia, "Times New Roman", serif;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+      }
+
+      body {
+        margin: 0;
+        background: var(--night);
+        color: var(--ink);
+        line-height: 1.65;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: absolute;
+        z-index: 10;
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.65rem 1rem;
+        transform: translateY(-160%);
+        border-radius: 0.5rem;
+        background: var(--ink);
+        color: var(--night);
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 3rem));
+        margin-inline: auto;
+      }
+
+      .topbar {
+        position: sticky;
+        z-index: 5;
+        top: 0;
+        border-bottom: 1px solid var(--line);
+        background: rgb(23 18 31 / 92%);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav {
+        display: flex;
+        min-height: 76px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 1.15rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 40px;
+        aspect-ratio: 1;
+        place-items: center;
+        border: 1px solid rgb(244 199 120 / 48%);
+        border-radius: 50%;
+        color: var(--gold);
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(1rem, 3vw, 2rem);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      .nav-links .nav-cta {
+        padding: 0.65rem 1rem;
+        border: 1px solid rgb(240 154 183 / 60%);
+        border-radius: 999px;
+        color: var(--pink);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding-block: clamp(4.5rem, 9vw, 8rem);
+        background:
+          radial-gradient(ellipse at 82% 46%, rgb(143 89 139 / 24%), transparent 36%),
+          radial-gradient(ellipse at 5% 90%, rgb(240 154 183 / 9%), transparent 35%);
+      }
+
+      .hero-grid {
+        display: grid;
+        align-items: center;
+        gap: clamp(2.5rem, 8vw, 7rem);
+        grid-template-columns: 1.08fr 0.92fr;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--gold);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 24px;
+        height: 1px;
+        background: currentColor;
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 500;
+        line-height: 1.12;
+      }
+
+      h1 {
+        max-width: 680px;
+        margin-block: 1.2rem;
+        font-size: clamp(3rem, 6vw, 5.6rem);
+        letter-spacing: -0.045em;
+      }
+
+      h1 em {
+        color: var(--pink);
+        font-weight: 400;
+      }
+
+      .hero-copy {
+        max-width: 560px;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 50px;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: var(--pink);
+        color: #281724;
+        font-size: 0.92rem;
+        font-weight: 750;
+        text-decoration: none;
+        transition: transform 160ms ease, background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: #f5aec6;
+      }
+
+      .button-secondary {
+        border-color: var(--line);
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .button-secondary:hover {
+        background: rgb(255 255 255 / 7%);
+      }
+
+      .hero-note {
+        margin: 1.25rem 0 0;
+        color: #a99caf;
+        font-size: 0.82rem;
+      }
+
+      .tavern-art {
+        position: relative;
+        display: grid;
+        min-height: 390px;
+        place-items: center;
+        isolation: isolate;
+      }
+
+      .tavern-art::before,
+      .tavern-art::after {
+        position: absolute;
+        z-index: -1;
+        border: 1px solid rgb(244 199 120 / 22%);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .tavern-art::before {
+        width: min(370px, 85vw);
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgb(244 199 120 / 11%), rgb(143 89 139 / 9%) 52%, transparent 70%);
+      }
+
+      .tavern-art::after {
+        width: min(440px, 100vw);
+        aspect-ratio: 1;
+        border-style: dashed;
+        opacity: 0.55;
+      }
+
+      .art-card {
+        position: absolute;
+        display: grid;
+        width: 112px;
+        aspect-ratio: 0.78;
+        place-items: center;
+        border: 1px solid rgb(255 255 255 / 22%);
+        border-radius: 18px;
+        background: linear-gradient(145deg, #44304c, #251c30);
+        box-shadow: 0 18px 50px rgb(0 0 0 / 28%);
+        font-size: 2.4rem;
+      }
+
+      .art-card-one {
+        top: 14%;
+        left: 13%;
+        transform: rotate(-13deg);
+      }
+
+      .art-card-two {
+        right: 12%;
+        bottom: 17%;
+        transform: rotate(12deg);
+      }
+
+      .art-center {
+        display: grid;
+        width: 206px;
+        aspect-ratio: 1;
+        align-content: center;
+        justify-items: center;
+        border: 1px solid rgb(244 199 120 / 48%);
+        border-radius: 50%;
+        background: linear-gradient(155deg, #36243a, #201a2a 74%);
+        box-shadow: 0 0 90px rgb(240 154 183 / 13%), inset 0 0 36px rgb(244 199 120 / 8%);
+        text-align: center;
+      }
+
+      .art-center span {
+        color: var(--gold);
+        font-size: 3.8rem;
+        line-height: 1;
+      }
+
+      .art-center small {
+        margin-top: 0.85rem;
+        color: var(--pink);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .section {
+        padding-block: clamp(4rem, 8vw, 7rem);
+      }
+
+      .section-soft {
+        background: var(--plum);
+      }
+
+      .section-heading {
+        max-width: 650px;
+        margin: 0 auto 3rem;
+        text-align: center;
+      }
+
+      .section-heading .eyebrow {
+        justify-content: center;
+      }
+
+      h2 {
+        margin-block: 1rem;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        letter-spacing: -0.035em;
+      }
+
+      .section-heading p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .manifesto {
+        display: grid;
+        align-items: center;
+        gap: clamp(2rem, 7vw, 6rem);
+        grid-template-columns: 0.85fr 1.15fr;
+      }
+
+      .manifesto-quote {
+        padding: clamp(1.75rem, 4vw, 3rem);
+        border: 1px solid rgb(240 154 183 / 24%);
+        border-radius: 1.25rem;
+        background: linear-gradient(135deg, rgb(240 154 183 / 10%), rgb(244 199 120 / 5%));
+        color: var(--pink);
+        font-family: var(--serif);
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        line-height: 1.35;
+      }
+
+      .manifesto-text p {
+        color: var(--muted);
+      }
+
+      .manifesto-text p:last-child {
+        margin-bottom: 0;
+      }
+
+      .feature-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .feature-card {
+        min-height: 230px;
+        padding: 1.6rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: rgb(255 255 255 / 3%);
+        transition: transform 180ms ease, border-color 180ms ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-4px);
+        border-color: rgb(240 154 183 / 45%);
+      }
+
+      .feature-icon {
+        display: grid;
+        width: 46px;
+        aspect-ratio: 1;
+        margin-bottom: 1.2rem;
+        place-items: center;
+        border-radius: 14px;
+        background: rgb(240 154 183 / 12%);
+        font-size: 1.4rem;
+      }
+
+      .feature-card:nth-child(2) .feature-icon {
+        background: rgb(244 199 120 / 12%);
+      }
+
+      .feature-card:nth-child(3) .feature-icon {
+        background: rgb(167 215 197 / 12%);
+      }
+
+      h3 {
+        margin-bottom: 0.6rem;
+        font-size: 1.35rem;
+      }
+
+      .feature-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .values {
+        display: grid;
+        gap: 0.75rem;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 2.5rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .values li {
+        padding: 1.2rem 0.8rem;
+        border-top: 1px solid var(--line);
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 1.15rem;
+        text-align: center;
+      }
+
+      .values li span {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--mint);
+        font-family: inherit;
+        font-size: 1rem;
+      }
+
+      .invite {
+        overflow: hidden;
+        padding-block: clamp(4rem, 8vw, 6rem);
+        background:
+          radial-gradient(ellipse at 50% 130%, rgb(240 154 183 / 18%), transparent 55%),
+          #211929;
+        text-align: center;
+      }
+
+      .invite .wrap {
+        max-width: 760px;
+      }
+
+      .invite p {
+        max-width: 600px;
+        margin-inline: auto;
+        color: var(--muted);
+      }
+
+      .invite .button {
+        margin-top: 1rem;
+      }
+
+      footer {
+        padding-block: 1.5rem;
+        border-top: 1px solid var(--line);
+        color: #a99caf;
+        font-size: 0.82rem;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+      @media (max-width: 760px) {
+        .wrap {
+          width: min(100% - 2rem, 600px);
+        }
+
+        .nav {
+          min-height: 68px;
+          gap: 1rem;
+        }
+
+        .brand {
+          font-size: 1rem;
+        }
+
+        .brand-mark {
+          width: 36px;
+        }
+
+        .nav-links {
+          gap: 0.9rem;
+        }
+
+        .nav-links li:not(:last-child) {
+          display: none;
+        }
+
+        .hero-grid,
+        .manifesto {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 4rem;
+        }
+
+        .tavern-art {
+          min-height: 330px;
+        }
+
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-card {
+          min-height: auto;
+        }
+
+        .feature-icon {
+          margin-bottom: 0.85rem;
+        }
+
+        .values {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="topbar">
+      <nav class="nav wrap" aria-label="Navegação principal">
+        <a class="brand" href="#inicio" aria-label="Taberna dos Nerds, início">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>Taberna dos Nerds</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#sobre">A Taberna</a></li>
+          <li><a href="#experiencias">O que rola</a></li>
+          <li><a class="nav-cta" href="#comunidade">Chega mais <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="conteudo">
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-grid wrap">
+          <div>
+            <span class="eyebrow">Sua aventura começa aqui</span>
+            <h1 id="hero-title">A cultura nerd também é <em>coisa de mulher.</em></h1>
+            <p class="hero-copy">
+              Um lugar para jogar, imaginar, conversar e encontrar gente que entende
+              sua paixão. Puxe uma cadeira: tem espaço para você na Taberna.
+            </p>
+            <div class="actions">
+              <a class="button" href="#comunidade">Vem pra Taberna <span aria-hidden="true">→</span></a>
+              <a class="button button-secondary" href="#experiencias">Descubra o que rola</a>
+            </div>
+            <p class="hero-note">Seu repertório nerd é bem-vindo do jeitinho que é.</p>
+          </div>
+          <div class="tavern-art" role="img" aria-label="Ilustração de dados, livro e caneca em uma taberna fantástica">
+            <div class="art-card art-card-one" aria-hidden="true">✧</div>
+            <div class="art-card art-card-two" aria-hidden="true">🎲</div>
+            <div class="art-center" aria-hidden="true">
+              <span>⚔</span>
+              <small>taverna aberta</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-soft" id="sobre" aria-labelledby="sobre-title">
+        <div class="manifesto wrap">
+          <div class="manifesto-quote">
+            “Não precisa provar que pertence. A mesa já é sua.”
+          </div>
+          <div class="manifesto-text">
+            <span class="eyebrow">Um universo para chamar de seu</span>
+            <h2 id="sobre-title">Aqui, ser nerd é o bastante.</h2>
+            <p>
+              A Taberna dos Nerds nasceu para celebrar mulheres que amam tudo que
+              faz a imaginação viajar — e para aproximar quem sempre quis encontrar
+              sua própria party.
+            </p>
+            <p>
+              Seja sua primeira aventura ou sua centésima campanha, você encontra
+              um espaço leve para trocar ideias, descobrir novas histórias e curtir
+              sem precisar caber em nenhum estereótipo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experiencias" aria-labelledby="experiencias-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <span class="eyebrow">Escolha sua aventura</span>
+            <h2 id="experiencias-title">Tem lugar para todo tipo de nerdice.</h2>
+            <p>Seu próximo assunto favorito ou sua próxima amizade pode começar por aqui.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">🎲</span>
+              <h3>RPG &amp; board games</h3>
+              <p>Crie personagens, role os dados e descubra novas histórias em boa companhia.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">🎮</span>
+              <h3>Games &amp; cultura pop</h3>
+              <p>Do jogo favorito ao anime que você não para de indicar: toda paixão rende conversa.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">✨</span>
+              <h3>Encontros &amp; conexões</h3>
+              <p>Troque recomendações, compartilhe ideias e faça parte de uma comunidade acolhedora.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-soft" aria-labelledby="valores-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <span class="eyebrow">Nosso combinado</span>
+            <h2 id="valores-title">A aventura fica melhor quando todo mundo se sente bem.</h2>
+            <p>Uma comunidade onde dá para ser você, aprender junto e curtir com respeito.</p>
+          </div>
+          <ul class="values">
+            <li><span aria-hidden="true">♡</span>Acolhimento</li>
+            <li><span aria-hidden="true">✦</span>Respeito</li>
+            <li><span aria-hidden="true">☼</span>Diversidade</li>
+            <li><span aria-hidden="true">⚝</span>Paixão nerd</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="invite" id="comunidade" aria-labelledby="comunidade-title">
+        <div class="wrap">
+          <span class="eyebrow">A porta está aberta</span>
+          <h2 id="comunidade-title">Sua próxima party está esperando por você.</h2>
+          <p>
+            Chegue como você é, traga sua curiosidade e escolha seu lugar à mesa.
+            Na Taberna, toda boa aventura começa com um “oi”.
+          </p>
+          <a class="button" href="#inicio">Quero conhecer a Taberna <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content wrap">
+        <a class="brand" href="#inicio">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>Taberna dos Nerds</span>
+        </a>
+        <p>Um espaço para mulheres viverem a cultura nerd do seu jeito.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -19,23 +19,18 @@
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Mochiy+Pop+One&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Meta Pixel: troque SEU_PIXEL_ID pelo ID numérico do seu pixel -->
+  <!-- Meta Pixel: troque SEU_PIXEL_ID pelo ID numérico. O script só carrega depois do aceite. -->
   <script>
     window.META_PIXEL_ID = 'SEU_PIXEL_ID';
-    if (/^\d+$/.test(window.META_PIXEL_ID)) {
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', window.META_PIXEL_ID);
-      fbq('track', 'PageView');
+    try {
+      var escolhaCookies = localStorage.getItem('taberna-cookies');
+      if (escolhaCookies !== 'aceito' && escolhaCookies !== 'recusado') {
+        document.documentElement.classList.add('cookies-pendente');
+      }
+    } catch (e) {
+      document.documentElement.classList.add('cookies-pendente');
     }
   </script>
-  <!-- Fim Meta Pixel -->
 </head>
 <body>
   <div class="sky" aria-hidden="true"></div>
@@ -193,7 +188,21 @@
 
   <footer class="footer">
     <p>Taberna dos Nerds 🍻 feita por nerds, pra todas as nerds.</p>
+    <button type="button" class="footer__cookies" id="cookies-reabrir">Gerenciar cookies</button>
   </footer>
+
+  <div class="cookies" id="cookies" role="region" aria-labelledby="cookies-titulo" aria-describedby="cookies-desc">
+    <div class="cookies__inner">
+      <div class="cookies__texto">
+        <p class="cookies__titulo" id="cookies-titulo">Cookies</p>
+        <p id="cookies-desc">Um cookie do Meta conta visitas e cliques. Recusar não muda a página.</p>
+      </div>
+      <div class="cookies__acoes">
+        <button type="button" class="cookies__btn" id="cookies-recusar">Recusar</button>
+        <button type="button" class="cookies__btn cookies__btn--aceitar" id="cookies-aceitar">Aceitar</button>
+      </div>
+    </div>
+  </div>
 
   <div class="dock" aria-hidden="true">
     <a class="cta cta--dock" href="https://www.facebook.com/groups/tabernanerd"
